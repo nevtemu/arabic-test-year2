@@ -18,9 +18,9 @@ const previousQuestions = [, , , , ,];
 
 const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 const shuffle = array => { //this function only shuffles items in array. Required later for random positioning of correct answer in the list
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+  for (let x = array.length - 1; x > 0; x--) {
+    let y = Math.floor(Math.random() * (x + 1));
+    [array[x], array[y]] = [array[y], array[x]];
   }
 };
 const generateWord = () => { // I made wrong answers to generate randomly as children were able to figure out correct answer by eliminating known wrong answers. In previous versions wrong answers were selected from real Arabic words list (not matching correct answer of course)
@@ -58,7 +58,6 @@ const askQuestion = () => {
   previousQuestions.push(questionIndex);
   previousQuestions.shift();
   document.getElementById("question").innerHTML = question;
-  // document.getElementById("picture").src = "snake.jpg";
   document.getElementById("picture").src = "../src/ara/" + question.toString().toLowerCase() + ".jpg";
   let radios = document.getElementsByName("answers"); //reset radio buttons
   for (let i = 0; i < radios.length; i++) {
